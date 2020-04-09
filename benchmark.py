@@ -21,9 +21,9 @@ def gtta():
 
     return r.text
 
-def plot_and_export(list_x_axis, list_duration):
+def plot_and_export():
     plt.plot(list_x_axis, list_duration)
-    # plt.show()
+    plt.show()
     plt.savefig(HOST_NAME + '_gtta_benchmark.png', bbox_inches='tight')
 
 for index in range(TEST_TIMES):
@@ -31,10 +31,10 @@ for index in range(TEST_TIMES):
     obj_response = json.loads(gtta())
     
     print("Duration: " + str(obj_response["duration"]))
-    list_x_axis.append(str(index))
+    list_x_axis.append(index)
     list_duration.append(obj_response["duration"])
     
 # Plot
 print("Starting to plot ...")
-plot_and_export(list_x_axis, list_duration)
+plot_and_export()
 print("Done")
